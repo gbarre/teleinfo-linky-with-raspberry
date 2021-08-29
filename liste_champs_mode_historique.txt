@@ -1,0 +1,12 @@
+Adresse du compteur	ADCO	12	Sans
+Option tarifaire HC/BASE	OPTARIF	04	Sans
+Intensité souscrite	ISOUSC	02	A
+Index heure de base	BASE	09	Wh
+Index heure creuse	HCHC	09	Wh
+index heure pleine	HCHP	09	Wh
+Période tarifaire en cours	PTEC	01	Sans
+Intensité instantanée	IINST	03	0
+Intensité max	IMAX	03	A
+Puissance Apparente	PAPP	05	VA
+Horaire HP HC	HHPHC	O1	Sans
+Mot d'état du compteur	MOTDETAT	06	Sans

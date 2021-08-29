@@ -1,0 +1,10 @@
+02	SagemCom
+03	ITRON ou Actaris
+04	Landis&Gyr
+06	ITRON
+34	ELSTER - HONEYWELL
+81	SagemCom 1M
+82	Landis&Gyr 1M
+83	ELSTER - HONEYWELL 1M
+84	SagemCom 1M
+85	ITRON 1M

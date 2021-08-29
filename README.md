@@ -46,3 +46,5 @@ Tuto pas à pas sur le blog de Sebastien Reuiller : [Monitorer son compteur Link
 
 ## Sources diverses
 https://github.com/colloc-ahgm/linky-collector
+https://hallard.me/pitinfov12/
+https://linuxfr.org/forums/linux-general/posts/configurer-ttys0

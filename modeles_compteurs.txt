@@ -1,0 +1,52 @@
+
+# Enedis-NOI-CPT_54E - 2.2. Les compteurs concernés
+# code du constructeur                 2 caractères,
+# millésime de l'année de construction 2 caractères,
+# type de l'appareil                   2 caractères,
+# matricule de l'appareil              6 caractères.
+
+# types :
+#    60 : Linky, monophasé, 60 A, généralisation, génération CPL G1
+#    61 : Linky, monophasé, 60 A, généralisation, génération CPL G3
+#    62 : Linky, monophasé, 90 A, généralisation, génération CPL G1
+#    63 : Linky, triphasé, 60 A, généralisation, génération CPL G1
+#    64 : Linky, monophasé, 60 A, généralisation, génération CPL G3
+#    65 : Linky, monophasé, 90 A, Expérimentation CPL, génération CPL G3
+#    67 : Linky, monophasé, 90 A, Pilote Linky, génération CPL G1
+#    68 : Linky, triphasé, 60 A, Pilote Linky, génération CPL G1
+#    70 : Linky, monophasé, 60 A, Mise au point, génération CPL G3
+#    71 : Linky, triphasé, 60 A, Mise au point, génération CPL G3
+#    75 : Linky, monophasé, 90 A, généralisation palier 1, génération CPL G3
+#    76 : Linky, triphasé, 60 A, généralisation palier 1, génération CPL G3
+
+#modèles :
+#Sagemcom S12C3
+#Sagemcom S12C5 
+#ITRON ITE411L1B
+#ITRON ITE411L3B 
+#ITRON ITE411L3H
+#Landis&Gyr L20C3 G3
+#Elester/Honeywell AS330L-G3
+# tri : Sagemcom S34C3
+# tri : ITRON ITE414L3B
+
+# fabriquants:
+#    02 : SagemCom
+#    03 : ITRON (ou Actaris)
+#    04 : Landis&Gyr
+#    06 : ITRON
+#    34 : ELSTER / HONEYWELL
+#    81 : SagemCom (code additionnel, dépassement 1 million de compteurs par an)
+#    82 : Landis&Gyr / Siemens (code additionnel, dépassement 1 million de compteurs par an)
+#    83 : ELSTER / HONEYWELL (code additionnel, dépassement 1 million de compteurs par an)
+#    84 : SagemCom (code additionnel, dépassement 1 million de compteurs par an)
+#    85 : ITRON (code additionnel, dépassement 1 million de compteurs par an)
+
+#
+# checksum
+#Réf. : Identifiants-Euridis-Liste-CC-TT
+
+# C1 est le reste de la division par 11 du nombre S1 
+# S1 = N1 + N2 + ... + N11 + N12
+# C2 est le reste de la division par 11 du nombre S2
+# (1 x N1)+ (2 x N2)+ ... + (11x N11)+ (12xN12)

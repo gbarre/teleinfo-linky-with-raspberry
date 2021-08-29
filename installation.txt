@@ -1,0 +1,37 @@
+# clone du repository GIT
+sudo apt install git -y
+git clone https://github.com/Charlymd/teleinfo-linky-with-raspberry.git
+sudo cp ./teleinfo-linky-with-raspberry/teleinfo.service /etc/systemd/system/teleinfo.service
+sudo mv ./teleinfo-linky-with-raspberry /opt/
+
+
+# Influxdb
+curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+sudo apt update
+sudo apt install influxdb
+sudo systemctl enable influxdb.service
+
+
+# Grafana
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+sudo apt-get update
+sudo apt-get install -y grafana
+sudo /bin/systemctl enable grafana-server
+sudo /bin/systemctl start grafana-server
+
+
+# librairies Python3
+sudo apt install python3-pip
+sudo pip3 install pySerial influxdb
+
+
+# moniteur de port serie
+
+# vérification flux pour un compteur en mode historique
+stty -F /dev/ttyS0 1200 sane -parenb cs7 clocal -crtscts
+cat /dev/ttyS0
+# vérification du flux pour un compteur en mode standard
+stty -F /dev/ttyS0 9600 sane -parenb cs7 clocal -crtscts
+cat /dev/ttyS0
