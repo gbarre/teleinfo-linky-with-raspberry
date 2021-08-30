@@ -9,7 +9,7 @@ User=root
 Group=root
 UMask=007
  
-ExecStart=/usr/bin/python3 /opt/teleinfo-linky-with-raspberry/teleinfo_standard.py
+ExecStart=/usr/bin/python3 /opt/teleinfo-linky-with-raspberry/teleinfo.py
  
 Restart=on-failure
  

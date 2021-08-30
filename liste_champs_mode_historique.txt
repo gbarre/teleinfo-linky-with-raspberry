@@ -4,9 +4,30 @@ Intensité souscrite	ISOUSC	02	A
 Index heure de base	BASE	09	Wh
 Index heure creuse	HCHC	09	Wh
 index heure pleine	HCHP	09	Wh
+Index option EJP Heures normales	EJPHN	9	Wh
+Index option EJP Heures creuses	EJPHPM	9	Wh
+Index option tempo HC bleus	BBRHCJB	9	Wh
+Index option tempo HP bleus	BBRHPJB	9	Wh
+Index option tempo HC blancs	BBRHCJW	9	Wh
+Index option tempo HP blancs	BBRHPJW	9	Wh
+Index option tempo HC rouges	BBRHCJR	9	Wh
+Index option tempo HP rouges	BBRHPJR	9	Wh
+Preavis début EJP	PEJP	2	min
 Période tarifaire en cours	PTEC	01	Sans
+Couleur du lendemain	DEMAIN	4	Sans
 Intensité instantanée	IINST	03	0
+Intensité instantanée phase1	IINST1	03	0
+Intensité instantanée phase2	IINST2	03	0
+Intensité instantanée phase3	IINST3	03	0
+Avertissement de depassement de puissance souscrite	ADPS	3	A
 Intensité max	IMAX	03	A
+Intensité max phase1	IMAX1	03	A
+Intensité max phase2	IMAX2	03	A
+Intensité max phase3	IMAX3	03	A
 Puissance Apparente	PAPP	05	VA
 Horaire HP HC	HHPHC	O1	Sans
 Mot d'état du compteur	MOTDETAT	06	Sans
+Présence ds potentiels	PPOT	2	Sans
+Avertissement de dépassement intensité phase1	ADIR1	3	A
+Avertissement de dépassement intensité phase2	ADIR2	3	A
+Avertissement de dépassement intensité phase3	ADIR3	3	A

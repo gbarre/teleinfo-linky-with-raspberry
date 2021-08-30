@@ -1,8 +1,8 @@
 # Téléinfo Linky avec un Raspberry Pi
 Surveiller sa consommation électrique en temps réel avec un compteur Linky et un Raspberry 
 
-![grafana_std](https://github.com/Charlymd/teleinfo-linky-with-raspberry/blob/master/grafana_linky_standard.png)
-![grafana_std2](https://github.com/Charlymd/teleinfo-linky-with-raspberry/blob/master/grafana%20info%20compteur%20floute.png)
+![grafana_std](https://github.com/Charlymd/teleinfo-linky-with-raspberry/blob/master/documentation/grafana_linky_standard.png)
+![grafana_std2](https://github.com/Charlymd/teleinfo-linky-with-raspberry/blob/master/documentation/grafana%20info%20compteur%20floute.png)
 
 Basé sur le travail de Sebastien Reuiller qui m'a permis d'appréhender rapidement le fonctionnement de la prise de Télé Information Client (TIC)
 J'ai rajouté quelques fonctions telles que le calcul du checksum des valeurs d'index et la prise en charge de la tarification de base.
@@ -17,7 +17,7 @@ Les compteurs Linky sont livrés par défaut en mode historique pour permettre u
 Il est possible de les basculer en mode standard via l'espace client de votre fournisseur d'énergie (section configuration TIC) ou en appelant Enedis.
 
 Le mode standard permet d'accéder à plus d'informations dont la liste exaustive est ici :
-https://github.com/Charlymd/teleinfo-linky-with-raspberry/blob/master/liste_champs_mode_standard.txt
+https://github.com/Charlymd/teleinfo-linky-with-raspberry/blob/master/documentation/liste_champs_mode_standard.txt
 
 Exemple :
 - Tension instantanée et moyennée par phase

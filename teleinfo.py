@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# __author__ = "Sébastien Reuiller, Charles Peltier"
-# __credit__ = "gizmo15"
+# __author__ = "Charles Peltier"
+# __credit__ = "Sébastien Reuiller, gizmo15"
 # __licence__ = "Apache License 2.0"
 """Send teleinfo to influxdb."""
 
@@ -24,6 +24,7 @@
 # }
 
 # Library
+import os
 import logging
 import time
 from datetime import datetime
@@ -31,16 +32,17 @@ from datetime import datetime
 import requests
 import serial
 from influxdb import InfluxDBClient
+from lib_enedis import energy_meter
 
 # Config
-LOGGING_MODE = 'INFO'  # DEBUG, WARNING, INFO
+LOGGING_MODE = "INFO"	  # DEBUG, WARNING, INFO
 TIC_MODE = "HISTORIQUE"  # STANDARD, HISTORIQUE
 TIC_PORT = '/dev/ttyS0' # Not use for the moment
 PROBE_NAME = 'Raspberry' # Not use for the moment
 DUT = 'Linky' # Device under test - Not use for the moment
-LOGGER_FILE = "/var/log/linky/releve.log" # Not use for the moment
+LOGGER_FILE = "/var/log/teleinfo/releve.log"	# Not use for the moment
 INFLUXDB_HOST = "localhost"
-DB = "teleinfo3"
+DB = "teleinfo"
 
 # dictionaries and keys
 LABELS_HISTORIQUE_FILE = "liste_champs_mode_historique.txt"
@@ -52,10 +54,17 @@ DICT_MODEL_FILE = "dictionnaire_type_linky.txt"
 CHAR_MEASURE_KEYS = ['OPTARIF', 'HHPHC', 'PTEC', 'MOTDETAT', 'DATE', 'NGTF', 'LTARF', 'MSG1', 'NJOURF', 'NJOURF+1',
                      'PJOURF', 'PJOURF+1', 'EASD02', 'STGE', 'RELAIS']
 
+
+# Creation of directory for log
+directory = os.path.dirname("/var/log/teleinfo/")
+if not os.path.exists(directory):
+   os.makedirs(directory)
+
 # creation of logguer
 numeric_level = getattr(logging, LOGGING_MODE.upper(), None)
-logging.basicConfig(filename=LOGGER_FILE,
-                    level=numeric_level, format='%(asctime)s %(message)s')
+logging.basicConfig(filename=LOGGER_FILE,level=numeric_level, format='%(asctime)s %(message)s')
+logging.info('\n')
+logging.info(datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"))
 logging.info("Teleinfo starting..")
 
 # connexion to InfluxDB database
@@ -190,7 +199,6 @@ def calculate_cosphi():
     logging.debug(trame["COSPHI"])
 
 
- 
 def main():
     """Main function to read teleinfo."""
 
@@ -207,7 +215,7 @@ def main():
         logging.debug("\n\nKnow manufacturer: %s",dict_linky_oem)
         
         dict_linky_models = models_from_file(DICT_MODEL_FILE)
-        logging.debug("\n\nKown linky models: s%",dict_linky_models)
+        #logging.debug("\n\nKown linky models: s%",dict_linky_models)
 
         # create new frame
         logging.debug("\n\ncreate first frame")
@@ -215,9 +223,9 @@ def main():
 
         # Read information from serial
         line = tic.readline()
-        logging.info("Search start of frame in %s", line)
-        
-	# loop and search beginning of frame
+        logging.info("Start of frames analysis")
+	
+        # loop and search beginning of frame
         while b'\x02' not in line:
             line = tic.readline()
         
@@ -264,8 +272,15 @@ def main():
                     # decode Linky serial to find OEM ID
                     trame['OEM'] = oem_linky(str(trame[ADDRESS_LINKY]))
 
-                    # Add timestamp of frame from linky to debug
-                    trame['horodatage'] = time.time()
+                    # decode register statut form STGE
+                    try:
+                        STGE=trame['STGE']
+                        dict_register=energy_meter.register_analyze('STGE')
+                        for key,value in dict_register.items():
+                            logging.debug(key+':'+value)
+                            trame[key]=value
+                    except:
+                        logging.debug('STGE absent')
 
                     # insert in influxdb
                     logging.debug("\n\ntrying to add measure : %s", trame)

@@ -1,0 +1,9 @@
+#show raw data from serial port
+
+
+## with stty
+sudo stty -F /dev/ttyS0 1200 sane -parodd -crtscts -cs7
+
+
+# with minicom
+sudo minicom -D /dev/ttyS0 -o -7 -b 1200
