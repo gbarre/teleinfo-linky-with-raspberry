@@ -30,7 +30,7 @@ from datetime import datetime
 import requests
 import serial
 from influxdb import InfluxDBClient
-MODE = "DEBUG"  # DEBUG, INFO
+MODE = "DEBUG"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
 
 # clés téléinfo
 CHAR_MEASURE_KEYS = ['DATE', 'NGTF', 'LTARF', 'MSG1', 'NJOURF', 'NJOURF+1',
@@ -56,7 +56,7 @@ while not CONNECTED:
             CLIENT.create_database(DB)
             logging.info("Database %s created!", DB)
         CLIENT.switch_database(DB)
-        logging.info("Connected to %s!", DB)
+        logging.info("Connected to %s !", DB)
     except requests.exceptions.ConnectionError:
         logging.info('InfluxDB is not reachable. Waiting 5 seconds to retry.')
         time.sleep(5)
@@ -122,10 +122,12 @@ def dico_from_file(file):
 
 def main():
     """Main function to read teleinfo."""
-    with serial.Serial(port='/dev/ttyAMA0', baudrate=9600, parity=serial.PARITY_NONE,
+    with serial.Serial(port='/dev/ttyAMA0', 
+                       baudrate=9600,
+                       parity=serial.PARITY_NONE,
                        stopbits=serial.STOPBITS_ONE,
-                       bytesize=serial.SEVENBITS, timeout=1) as ser:
-        # stopbits=serial.STOPBITS_ONE,
+                       bytesize=serial.SEVENBITS,
+                       timeout=1) as ser:
         logging.info("Teleinfo is reading on /dev/ttyAMA0..")
         logging.info("Mode standard")
 
@@ -144,7 +146,7 @@ def main():
         line = ser.readline()
 
         while True:
-            #logging.debug(line)
+            logging.debug(line)
             line_str = line.decode("utf-8")
             ar_split = line_str.split("\t") # separation sur tabulation
 
@@ -152,7 +154,7 @@ def main():
                 key = ar_split[0]
                 #checksum = ar[-1] #dernier caractere
                 #verification = verif_checksum(line_str,checksum)
-                #logging.debug("verification checksum :  s%" % str(verification))
+                #logging.debug("[debug]verification checksum :  s%" % str(verification))
 
                 if key in labels_linky:
                     # typer les valeurs connus sous forme de chaines en "string"
@@ -160,15 +162,16 @@ def main():
                         value = ar_split[-2]
                     else:
                         try:
-                            value = int(ar_split[-2])   # typer les autres valeurs en "integer"
+                            # typer les autres valeurs en "integer"
+                            value = int(ar_split[-2])
                         except Exception:
-                            logging.info("erreur de conversion en nombre entier")
+                            logging.error("erreur de conversion en nombre entier %s", key)
                             value = 0
 
                     trame[key] = value   # creation du champ pour la trame en cours
                 else:
                     trame['verification_error'] = "1"
-                    logging.debug("erreur etiquette inconnue")
+                    logging.error("[erreur] etiquette inconnue %s", key)
 
                 if b'\x03' in line:  # si caractère de fin de trame, on insère la trame dans influx
                     time_measure = time.time()
@@ -187,14 +190,13 @@ def main():
 
                     # insertion dans influxdb
                     add_measures(trame)
-
-                   #logging.debug(trame)
-
+                    logging.info("------")
+                    logging.info("------ add frame in database")
+                    
                     trame = dict()  # on repart sur une nouvelle trame
             except Exception:
-                logging.debug("erreur traitement etiquette: %s", key)
-                #logging.error("Exception : %s" % e, exc_info=True)
-                #logging.error("Ligne brut: %s \n" % line)
+                logging.error("[erreur] traitement etiquette: %s", key)
+                logging.debug("Ligne brut: %s \n" % line)
             line = ser.readline()
 
 
