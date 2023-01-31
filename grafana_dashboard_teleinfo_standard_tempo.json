@@ -29,10 +29,6 @@
     {
       "collapsed": false,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -341,10 +337,6 @@
     {
       "collapsed": false,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -392,7 +384,7 @@
               }
             ]
           },
-          "unit": "none"
+          "unit": "voltamp"
         },
         "overrides": []
       },
@@ -491,7 +483,7 @@
               }
             ]
           },
-          "unit": "none"
+          "unit": "amp"
         },
         "overrides": []
       },
@@ -556,19 +548,13 @@
               {
                 "params": [],
                 "type": "mean"
-              },
-              {
-                "params": [
-                  "*230"
-                ],
-                "type": "math"
               }
             ]
           ],
           "tags": []
         }
       ],
-      "title": "Puissance",
+      "title": "Courant efficace, phase 1",
       "type": "stat"
     },
     {
@@ -1118,10 +1104,6 @@
     {
       "collapsed": false,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1150,7 +1132,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "watth"
         },
         "overrides": []
       },
@@ -1241,7 +1224,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "watth"
         },
         "overrides": []
       },
@@ -1332,7 +1316,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "watth"
         },
         "overrides": []
       },
@@ -1423,7 +1408,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "watth"
         },
         "overrides": []
       },
@@ -1514,7 +1500,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "watth"
         },
         "overrides": []
       },
@@ -1605,7 +1592,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "watth"
         },
         "overrides": []
       },
@@ -1680,6 +1668,154 @@
       "type": "stat"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB - teleinfo",
+      "description": "SINSTS",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "voltamp"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "hiddenSeries": false,
+      "hideTimeOverride": false,
+      "id": 6,
+      "interval": "10s",
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.2.4",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Puissance app. Instantanée soutirée",
+          "color": "rgb(229, 172, 14)"
+        },
+        {
+          "alias": "Intensité phase1",
+          "color": "rgba(176, 229, 168, 0.43)",
+          "yaxis": 1
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Puissance app. Instantanée soutirée",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "0"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "SINSTS",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"value\")::integer AS value FROM \"HCHC\" WHERE $timeFilter GROUP BY time(1s) fill(linear)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Puissance apparente soutirée",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "voltamp",
+          "label": "Puissance",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "voltamp",
+          "label": "Intensité",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "datasource": "InfluxDB - teleinfo",
       "description": "",
       "fieldConfig": {
@@ -1724,7 +1860,8 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "watth"
         },
         "overrides": [
           {
@@ -1823,7 +1960,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 21
       },
       "id": 87,
       "options": {
@@ -2099,148 +2236,12 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "InfluxDB - teleinfo",
-      "description": "SINSTS",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 20
-      },
-      "hiddenSeries": false,
-      "hideTimeOverride": false,
-      "id": 6,
-      "interval": "10s",
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.4",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "Puissance app. Instantanée soutirée",
-          "color": "rgb(229, 172, 14)"
+      "fieldConfig": {
+        "defaults": {
+          "unit": "volt"
         },
-        {
-          "alias": "Intensité phase1",
-          "color": "rgba(176, 229, 168, 0.43)",
-          "yaxis": 1
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "Puissance app. Instantanée soutirée",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "0"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "measurement": "SINSTS",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"value\")::integer AS value FROM \"HCHC\" WHERE $timeFilter GROUP BY time(1s) fill(linear)",
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Puissance apparente soutirée",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
+        "overrides": []
       },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "none",
-          "label": "Puissance",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "decimals": null,
-          "format": "voltamp",
-          "label": "Intensité",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "InfluxDB - teleinfo",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -2362,7 +2363,7 @@
       "yaxes": [
         {
           "decimals": null,
-          "format": "short",
+          "format": "volt",
           "label": null,
           "logBase": 1,
           "max": "255",
@@ -2507,10 +2508,6 @@
     {
       "collapsed": false,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3215,10 +3212,6 @@
     {
       "collapsed": true,
       "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3239,7 +3232,7 @@
             "h": 9,
             "w": 24,
             "x": 0,
-            "y": 41
+            "y": 45
           },
           "hiddenSeries": false,
           "id": 61,
@@ -3352,7 +3345,7 @@
       "type": "row"
     }
   ],
-  "refresh": "1m",
+  "refresh": "10s",
   "schemaVersion": 32,
   "style": "dark",
   "tags": [],
@@ -3360,7 +3353,7 @@
     "list": []
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -3391,5 +3384,5 @@
   "timezone": "",
   "title": "Conso Elec - Base Standard",
   "uid": "q3v78rWgk",
-  "version": 6
+  "version": 10
 }
