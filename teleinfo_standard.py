@@ -36,10 +36,10 @@ MODE = "DEBUG"  # DEBUG, INFO
 
 # clés téléinfo
 CHAR_MEASURE_KEYS = ['DATE', 'NGTF', 'LTARF', 'MSG1', 'NJOURF', 'NJOURF+1',
-                     'PJOURF', 'PJOURF+1', 'EASD02', 'STGE', 'RELAIS']
+                     'PJOURF', 'PJOURF+1', 'PPOINTE', 'EASD02', 'STGE', 'RELAIS']
 
-LOGFOLDER = "/var/log/teleinfo/"
-LOGFILE = "releve.log"
+LOGFOLDER = "/influxdb/log/"
+LOGFILE = "teleinfo.log"
 TELEINFO_INI = "./teleinfo.ini"
 KEYS_FILE = "./liste_champs_mode_standard.txt"
 DICO_FILE = "./liste_fabriquants_linky.txt"
@@ -60,15 +60,29 @@ SERIALPORT = TELEINFO_DATA['serial_port']
 DB_SERVER = TELEINFO_DATA['influxdb_server']
 DB_PORT = TELEINFO_DATA['influxdb_port']
 DB_DATABASE = TELEINFO_DATA['influxdb_database']
+DB_USER = TELEINFO_DATA['influxdb_user']
+DB_PASSWORD = TELEINFO_DATA['influxdb_password']
+LOG_MODE = TELEINFO_DATA['log_mode']
 
 
 # création du logguer
+if LOG_MODE == 'DEBUG':
+    level = logging.DEBUG
+elif LOG_MODE == 'INFO':
+    level = logging.INFO
+else:
+    level = logging.WARN
 logging.basicConfig(filename=LOGFOLDER + LOGFILE,
-                    level=logging.INFO, format='%(asctime)s %(message)s')
+                    level=level, format='%(asctime)s %(message)s')
 logging.info("Teleinfo starting..")
 
 # connexion a la base de données InfluxDB
-CLIENT = InfluxDBClient(DB_SERVER, DB_PORT)
+CLIENT = InfluxDBClient(
+    host=DB_SERVER,
+    port=DB_PORT,
+    username=DB_USER,
+    password=DB_PASSWORD
+)
 CONNECTED = False
 while not CONNECTED:
     try:
@@ -144,11 +158,11 @@ def dico_from_file(file):
 
 def main():
     """Main function to read teleinfo."""
-    with serial.Serial(port='/dev/ttyAMA0', baudrate=9600, parity=serial.PARITY_NONE,
+    with serial.Serial(port=SERIALPORT, baudrate=9600, parity=serial.PARITY_NONE,
                        stopbits=serial.STOPBITS_ONE,
                        bytesize=serial.SEVENBITS, timeout=1) as ser:
         # stopbits=serial.STOPBITS_ONE,
-        logging.info("Teleinfo is reading on /dev/ttyAMA0..")
+        logging.info(f"Teleinfo is reading on {SERIALPORT}..")
         logging.info("Mode standard")
 
         labels_linky = keys_from_file(KEYS_FILE)
