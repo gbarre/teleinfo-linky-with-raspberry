@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -20,7 +23,6 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 0,
   "id": 63,
   "links": [],
@@ -28,7 +30,10 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "000000001"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -37,12 +42,23 @@
       },
       "id": 37,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "000000001"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Abonnement",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -73,7 +89,6 @@
         "y": 1
       },
       "id": 21,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -91,9 +106,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -129,8 +148,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -171,7 +192,6 @@
         "y": 1
       },
       "id": 19,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -189,9 +209,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -232,8 +256,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -274,7 +300,6 @@
         "y": 1
       },
       "id": 45,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -292,9 +317,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -336,7 +365,10 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "000000001"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -345,12 +377,23 @@
       },
       "id": 33,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "000000001"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Instantané",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "SINST\nPuissance app. Instantanée soutirée",
       "fieldConfig": {
         "defaults": {
@@ -376,11 +419,16 @@
                 "value": null
               },
               {
-                "color": "rgba(237, 129, 40, 0.89)",
+                "color": "yellow",
                 "value": 3000
               },
               {
-                "color": "#d44a3a"
+                "color": "red",
+                "value": 6000
+              },
+              {
+                "color": "dark-purple",
+                "value": 9000
               }
             ]
           },
@@ -395,7 +443,6 @@
         "y": 5
       },
       "id": 17,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -413,10 +460,14 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "alias": "Puissance app. Instantanée soutirée",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -451,8 +502,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "IRMS1",
       "fieldConfig": {
         "defaults": {
@@ -494,7 +547,6 @@
         "y": 5
       },
       "id": 73,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -512,9 +564,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -558,8 +614,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "Rapport puissance active(VA) / puissance apparente (W)\nCorrespond également au déphasage tension intensité",
       "fieldConfig": {
         "defaults": {
@@ -608,7 +666,6 @@
         "y": 5
       },
       "id": 75,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -624,10 +681,14 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "alias": "CosPhi",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -669,8 +730,10 @@
       "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "IRMS1\nCourant efficace, phase 1",
       "fieldConfig": {
         "defaults": {
@@ -719,7 +782,6 @@
         "y": 5
       },
       "id": 15,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -735,10 +797,14 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "alias": "Intensité1",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -779,8 +845,10 @@
       "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -827,7 +895,6 @@
         "y": 5
       },
       "id": 63,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -843,9 +910,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -886,8 +957,10 @@
       "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "URMS1",
       "fieldConfig": {
         "defaults": {
@@ -935,7 +1008,6 @@
         "y": 5
       },
       "id": 41,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -951,10 +1023,14 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "alias": "Tension1",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -995,8 +1071,10 @@
       "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1043,7 +1121,6 @@
         "y": 5
       },
       "id": 47,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -1059,9 +1136,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -1103,7 +1184,10 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "000000001"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1112,11 +1196,23 @@
       },
       "id": 35,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "000000001"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Période",
       "type": "row"
     },
     {
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1159,9 +1255,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -1208,7 +1308,10 @@
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1251,9 +1354,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -1268,7 +1375,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "EASF01",
+          "measurement": "EASF02",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -1296,11 +1403,14 @@
           "tags": []
         }
       ],
-      "title": "HC Bleu",
+      "title": "HP Bleu",
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1343,9 +1453,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -1392,7 +1506,10 @@
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1435,9 +1552,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -1484,7 +1605,10 @@
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1527,9 +1651,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -1576,7 +1704,10 @@
       "type": "stat"
     },
     {
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1619,9 +1750,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -1668,72 +1803,126 @@
       "type": "stat"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "SINSTS",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 3000
+              },
+              {
+                "color": "red",
+                "value": 6000
+              },
+              {
+                "color": "#8f3bb833",
+                "value": 9000
+              }
+            ]
+          },
           "unit": "voltamp"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Puissance app. Instantanée soutirée"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "rgb(229, 172, 14)",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 24,
         "x": 0,
         "y": 13
       },
-      "hiddenSeries": false,
       "hideTimeOverride": false,
       "id": 6,
       "interval": "10s",
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "connected",
       "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.4",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "Puissance app. Instantanée soutirée",
-          "color": "rgb(229, 172, 14)"
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
         },
-        {
-          "alias": "Intensité phase1",
-          "color": "rgba(176, 229, 168, 0.43)",
-          "yaxis": 1
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
         }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      },
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "alias": "Puissance app. Instantanée soutirée",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -1773,50 +1962,14 @@
           "tags": []
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "Puissance apparente soutirée",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "voltamp",
-          "label": "Puissance",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "decimals": null,
-          "format": "voltamp",
-          "label": "Intensité",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1824,6 +1977,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1967,16 +2122,22 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.2.4",
       "targets": [
         {
           "alias": "HC Bleu",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2018,6 +2179,10 @@
         },
         {
           "alias": "HP Bleu",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2060,6 +2225,10 @@
         },
         {
           "alias": "HC Blanc",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2102,6 +2271,10 @@
         },
         {
           "alias": "HP Blanc",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2144,6 +2317,10 @@
         },
         {
           "alias": "HC Rouge",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2186,6 +2363,10 @@
         },
         {
           "alias": "HP Rouge",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2231,61 +2412,101 @@
       "type": "timeseries"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line+area"
+            }
+          },
+          "mappings": [],
+          "max": 255,
+          "min": 205,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(31, 155, 239, 0.2)",
+                "value": null
+              },
+              {
+                "color": "transparent",
+                "value": 210
+              },
+              {
+                "color": "red",
+                "value": 250
+              }
+            ]
+          },
           "unit": "volt"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
-        "h": 5,
+        "h": 6,
         "w": 24,
         "x": 0,
         "y": 28
       },
-      "hiddenSeries": false,
       "id": 43,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.4",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "URMS1.mean"
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
         }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      },
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2323,111 +2544,95 @@
           "tags": []
         }
       ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 250,
-          "yaxis": "left"
-        },
-        {
-          "colorMode": "custom",
-          "fill": true,
-          "fillColor": "rgba(31, 155, 239, 0.2)",
-          "line": true,
-          "lineColor": "#70dbed",
-          "op": "lt",
-          "value": 210,
-          "yaxis": "left"
-        }
-      ],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "Historique tension",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": null,
-          "format": "volt",
-          "label": null,
-          "logBase": 1,
-          "max": "255",
-          "min": "205",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "Rapport puissance active / puissance apparente",
-      "fill": 1,
-      "fillGradient": 0,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 4,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 34
       },
-      "hiddenSeries": false,
       "id": 77,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
       },
-      "percentage": false,
-      "pluginVersion": "8.2.4",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2464,64 +2669,40 @@
           "tags": []
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
       "title": "CosPhi",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "000000001"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 37
+        "y": 38
       },
       "id": 67,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "000000001"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Information compteur",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2559,10 +2740,9 @@
         "h": 3,
         "w": 5,
         "x": 1,
-        "y": 38
+        "y": 39
       },
       "id": 65,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -2580,9 +2760,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2623,8 +2807,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2662,10 +2848,9 @@
         "h": 3,
         "w": 5,
         "x": 6,
-        "y": 38
+        "y": 39
       },
       "id": 39,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -2683,9 +2868,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2726,8 +2915,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "Point de référence de mesure ENEDIS",
       "fieldConfig": {
         "defaults": {
@@ -2766,10 +2957,9 @@
         "h": 3,
         "w": 7,
         "x": 11,
-        "y": 38
+        "y": 39
       },
       "id": 53,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -2787,9 +2977,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2830,8 +3024,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2869,10 +3065,9 @@
         "h": 3,
         "w": 5,
         "x": 18,
-        "y": 38
+        "y": 39
       },
       "id": 49,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -2890,9 +3085,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -2933,8 +3132,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "registre de 8 caractères ASCII\ncorrespond à 32 bits de statut",
       "fieldConfig": {
         "defaults": {
@@ -2973,10 +3174,9 @@
         "h": 3,
         "w": 5,
         "x": 1,
-        "y": 41
+        "y": 42
       },
       "id": 51,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -2994,9 +3194,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -3037,8 +3241,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "InfluxDB - teleinfo",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
       "description": "8 relais dont 1 réel et 7 virtuels.\n8 bits transformés en décimal.",
       "fieldConfig": {
         "defaults": {
@@ -3077,10 +3283,9 @@
         "h": 3,
         "w": 4,
         "x": 6,
-        "y": 41
+        "y": 42
       },
       "id": 55,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -3090,7 +3295,7 @@
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
-            "mean"
+            "last"
           ],
           "fields": "/^distinct$/",
           "values": false
@@ -3098,9 +3303,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.4",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [
             {
               "params": [
@@ -3135,50 +3344,84 @@
       "type": "stat"
     },
     {
-      "columns": [],
-      "datasource": "InfluxDB - teleinfo",
-      "fontSize": "100%",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "hB43xV04k"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "decimals": 2,
+          "displayName": "",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Time"
+              },
+              {
+                "id": "unit",
+                "value": "time: YYYY-MM-DD HH:mm:ss"
+              },
+              {
+                "id": "custom.align"
+              }
+            ]
+          }
+        ]
+      },
       "gridPos": {
         "h": 3,
         "w": 13,
         "x": 10,
-        "y": 41
+        "y": 42
       },
       "id": 23,
       "links": [],
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "align": "auto",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "alias": "",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
           ],
-          "decimals": 2,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.3.6",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "groupBy": [],
           "hide": false,
           "limit": 10,
@@ -3206,17 +3449,27 @@
         }
       ],
       "title": "Mot d'état",
-      "transform": "timeseries_to_rows",
-      "type": "table-old"
+      "transformations": [
+        {
+          "id": "seriesToRows",
+          "options": {
+            "reducers": []
+          }
+        }
+      ],
+      "type": "table"
     },
     {
       "collapsed": true,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "000000001"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 44
+        "y": 45
       },
       "id": 59,
       "panels": [
@@ -3225,7 +3478,10 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "InfluxDB - teleinfo",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "hB43xV04k"
+          },
           "fill": 1,
           "fillGradient": 0,
           "gridPos": {
@@ -3263,6 +3519,10 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "hB43xV04k"
+              },
               "groupBy": [
                 {
                   "params": [
@@ -3300,9 +3560,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Puissance app. Instantanée injectée",
           "tooltip": {
             "shared": true,
@@ -3311,49 +3569,49 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "voltamp",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "000000001"
+          },
+          "refId": "A"
         }
       ],
       "title": "Production d'électricité injectée",
       "type": "row"
     }
   ],
-  "refresh": "10s",
-  "schemaVersion": 32,
+  "refresh": "30s",
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -3384,5 +3642,6 @@
   "timezone": "",
   "title": "Conso Elec - Base Standard",
   "uid": "q3v78rWgk",
-  "version": 10
+  "version": 14,
+  "weekStart": ""
 }
