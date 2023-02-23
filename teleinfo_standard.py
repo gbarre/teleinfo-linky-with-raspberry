@@ -38,11 +38,12 @@ MODE = "DEBUG"  # DEBUG, INFO
 CHAR_MEASURE_KEYS = ['DATE', 'NGTF', 'LTARF', 'MSG1', 'NJOURF', 'NJOURF+1',
                      'PJOURF', 'PJOURF+1', 'PPOINTE', 'EASD02', 'STGE', 'RELAIS']
 
+CWD = os.getcwd()
 LOGFOLDER = "/influxdb/log/"
 LOGFILE = "teleinfo.log"
-TELEINFO_INI = "./teleinfo.ini"
-KEYS_FILE = "./liste_champs_mode_standard.txt"
-DICO_FILE = "./liste_fabriquants_linky.txt"
+TELEINFO_INI = f"{CWD}/teleinfo.ini"
+KEYS_FILE = f"{CWD}/liste_champs_mode_standard.txt"
+DICO_FILE = f"{CWD}/liste_fabriquants_linky.txt"
 
 # Check if log folder exist
 if not pathlib.Path(LOGFOLDER).exists():
